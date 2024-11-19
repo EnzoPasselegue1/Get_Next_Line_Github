@@ -1,36 +1,25 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE 
-#   define BUFFER_SIZE 10
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
-# include <unistd.h>
 # include <fcntl.h>
-# include <stdlib.h> 
+# include <stdlib.h>
+# include <unistd.h>
 
-typedef struct s_list
-{
-    char    *str_buf;
-    struct s_list   *next;
-}       t_list;
+char	*get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+size_t	ft_strlen(const char *s);
 
-char    *get_next_line(int fd);
-char    *get_line(t_list *list);
-char    *get_next_line(int fd);
-
-int     len_to_newline(t_list *list);
-int     found_newline(t_list *list);
-
-
-void    ft_dealloc(t_list **list, t_list *clean_node, char *buf);
-void    copy_str(t_list *list, char *str);
-void    create_list(t_list **list, int fd);
-void    append(t_list **list, char *buf);
-void    clean_list(t_list **list);
-
-t_list  *find_last_node(t_list  *list);
-
-int     main(void);
+char	*ft_free(char *buf, char *line);
+char	*get_buf(char *buf);
+char	*ft_line(char *buf);
+char	*read_file(int fd, char *buf);
+char	*get_next_line(int fd);
 
 #endif
